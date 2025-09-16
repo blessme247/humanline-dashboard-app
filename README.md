@@ -33,5 +33,5 @@ run the Next.js development server:
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3008) in your browser to see the app in action.
+Open [http://localhost:3008](http://localhost:3008) in your browser to see the app in action.
 
