@@ -10,15 +10,11 @@ import {
   UserPlus,
   HelpCircle,
   Settings,
-  Sun,
-  Moon,
-  ChevronDown,
   ChevronRight,
   Briefcase,
   UserCheck,
   CalendarDays,
   LayoutGrid, 
-  ChevronsLeft
 } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
@@ -36,7 +32,6 @@ import {
   useSidebar,
   SidebarTrigger1,
 } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 import { ThemeSliderToggle } from "../ui/theme-toggle";
@@ -126,7 +121,6 @@ export function AppSidebar() {
   const { state } = useSidebar();
   const location = useLocation();
   const navigate = useNavigate();
-  const [isDark, setIsDark] = useState(false);
   const [openGroups, setOpenGroups] = useState<string[]>([]);
   const currentPath = location.pathname;
   const collapsed = state === "collapsed";
@@ -169,20 +163,6 @@ export function AppSidebar() {
     }
   };
 
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
-  }, []);
-
-  const toggleTheme = () => {
-    const newIsDark = !isDark;
-    setIsDark(newIsDark);
-    if (newIsDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
 
   return (
     <Sidebar

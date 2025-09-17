@@ -54,10 +54,10 @@ export function NotificationPopup({ isOpen, onClose }: NotificationPopupProps) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/20" onClick={onClose}>
-      <div 
-        className="absolute top-16 right-24 w-[500px]"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div
+  className="absolute top-[50%] left-[50%] w-[90%] -translate-x-1/2 -translate-y-1/2 md:left-0 md:translate-x-0 md:translate-y-0 md:top-16 md:right-24 md:w-[500px]"
+  onClick={(e) => e.stopPropagation()}
+>
         <Card className="shadow-lg border-border bg-background">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
             <CardTitle className="text-lg font-semibold">Notification</CardTitle>

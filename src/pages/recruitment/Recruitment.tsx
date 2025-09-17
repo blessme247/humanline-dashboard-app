@@ -188,16 +188,19 @@ export default function Recruitment() {
           <span>3D Designer</span>
         </div>
         
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold text-foreground">Recruitment</h1>
-          <div className="flex items-center gap-4">
-            <div className="relative">
+           <div className=" grid grid-cols-12 gap-y-4">
+          <h1 className="text-2xl font-semibold text-foreground col-span-12 md:col-span-3">Recruitment</h1>
+          <div className="flex items-center gap-4 col-span-12 md:col-span-9 md:justify-self-end grid grid-cols-2 ">
+            <div className="relative col-span-2 sm:col-span-1 w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Search what you need"
-                className="w-64 pl-10 bg-muted/50 border-0"
+                className="w-full pl-10 bg-muted/50 border-0"
               />
             </div>
+
+            <div className="flex items-center gap-4 col-span-2 sm:col-span-1">
+           
             <Button variant="tertiary" className="flex items-center gap-2">
               Add Candidates
               <ChevronDown className="w-4 h-4" />
@@ -211,6 +214,7 @@ export default function Recruitment() {
             <Button variant="ghost" size="icon">
               <Pencil className="w-4 h-4" />
             </Button>
+          </div>
           </div>
         </div>
       </div>

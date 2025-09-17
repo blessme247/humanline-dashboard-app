@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Download, Search, ChevronLeft, ChevronRight, FileDown } from "lucide-react";
+import { Calendar, Search, ChevronLeft, ChevronRight, FileDown } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -189,15 +189,15 @@ export default function EmployeeRequests() {
   return (
     <div className="flex-1  p-6">
        <Card className="space-y-6">
-           <CardHeader className='grid grid-cols-12 items-center'>
-             <CardTitle className="col-span-3">My Time Off</CardTitle>
+           <CardHeader className='grid grid-cols-12 gap-y-4 items-center'>
+             <CardTitle className="col-span-12 md:col-span-3">My Time Off</CardTitle>
 
-             <div className=' col-span-9 justify-self-end flex items-center space-x-3'>
-                <div className="relative w-[300px]">
+             <div className='col-span-12 md:col-span-9 sm:justify-self-end flex flex-col sm:flex-row gap-y-3 items-center gap-x-3 '>
+                <div className="relative w-full sm:w-[300px]">
           <Input placeholder="Search employee" className="pl-10 w-full" />
           <Search className="w-4 h-4 absolute right-3 top-3 text-muted-foreground" />
         </div>
-         <Button variant="tertiary" className="flex items-center gap-2">
+         <Button variant="tertiary" className="w-full  sm:w-fit flex items-center gap-2">
           <FileDown className="w-4 h-4" />
           Download CSV
         </Button>
@@ -206,7 +206,7 @@ export default function EmployeeRequests() {
 
            <CardContent className="space-y-6">
            {/* Filters */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <DatePickerComponent label="" popoverTriggerElement={<Button
           variant="outline"
           // onClick={() => setShowCalendar(!showCalendar)}
@@ -304,10 +304,10 @@ export default function EmployeeRequests() {
                   <TableHead className="w-12">
                     <Checkbox />
                   </TableHead>
-                  <TableHead>Employee Name</TableHead>
-                  <TableHead>From</TableHead>
-                  <TableHead>To</TableHead>
-                  <TableHead>Total</TableHead>
+                  <TableHead >Employee Name</TableHead>
+                  <TableHead className="min-w-36">From</TableHead>
+                  <TableHead className="min-w-36">To</TableHead>
+                  <TableHead className="min-w-36">Total</TableHead>
                   <TableHead>Type</TableHead>
                   <TableHead>Attachment</TableHead>
                   <TableHead>Status</TableHead>
@@ -364,14 +364,14 @@ export default function EmployeeRequests() {
                 <Button variant="ghost" size="sm" className="w-8 h-8 bg-tertiary text-tertiary-foreground">
                   1
                 </Button>
-                <Button variant="ghost" size="sm" className="w-8 h-8">
+                <Button variant="ghost" size="sm" className="hidden md:inline-flex w-8 h-8">
                   2
                 </Button>
-                <Button variant="ghost" size="sm" className="w-8 h-8">
+                <Button variant="ghost" size="sm" className="hidden md:inline-flex w-8 h-8">
                   3
                 </Button>
-                <span className="text-muted-foreground">...</span>
-                <Button variant="ghost" size="sm" className="w-8 h-8">
+                <span className="hidden md:inline-flex text-muted-foreground">...</span>
+                <Button variant="ghost" size="sm" className="hidden md:inline-flex w-8 h-8">
                   10
                 </Button>
                 <Button variant="ghost" size="icon" className="w-8 h-8">
@@ -379,13 +379,13 @@ export default function EmployeeRequests() {
                 </Button>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-sm text-muted-foreground">Showing 1 to 6 of 50 entries</span>
-                <Select defaultValue="8">
+                <span className="hidden md:inline-flex text-sm text-muted-foreground">Showing 1 to 6 of 50 entries</span>
+                <Select defaultValue="6">
                   <SelectTrigger className="w-24 h-8">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="8">Show 6</SelectItem>
+                    <SelectItem value="6">Show 6</SelectItem>
                     <SelectItem value="16">Show 16</SelectItem>
                     <SelectItem value="24">Show 24</SelectItem>
                   </SelectContent>

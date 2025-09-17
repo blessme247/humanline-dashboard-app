@@ -25,7 +25,7 @@ export function AppHeader() {
           <SidebarTrigger />
           
           {/* Search */}
-          <div className="relative">
+          <div className="hidden md:block relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search anything..."
