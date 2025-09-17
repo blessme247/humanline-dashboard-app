@@ -1,4 +1,4 @@
-# Chedaro Frontend Assessment
+# Dashboard Application
 
 This is a HR management app built with **React.js**.
 
