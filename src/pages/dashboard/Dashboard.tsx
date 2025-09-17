@@ -96,14 +96,14 @@ export default function Dashboard() {
         <p className="text-muted-foreground">This is your HR report so far</p>
       </div>
 
-      <Card className="pt-4">
+      <Card className="pt-4 ">
 
-          <CardContent className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <CardContent className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-4 p-0">
 
       {/* Stats Grid */}
-      <div className="col-span-2 lg:col-span-1 grid grid-cols-1 md:grid-cols-2  lg:gap-0">
+      <div className="col-span-2 lg:col-span-1 grid grid-cols-1 md:grid-cols-2 ">
         {statsData.map((stat, i) => (
-          <Card key={stat.title} className={cn("p-6  border-0 rounded-none shadow-none", i == 0 ? " lg:border-r md:border-b md:border-grey-300" : i == 1 ? "md:border-b md:border-grey-300" : i == 2 ? "lg:border-r lg:border-grey-300" : i == 3 ? "" : "" )}>
+          <Card key={stat.title} className={cn("p-6 md:p-6  border-0 rounded-none shadow-none", i == 0 ? " lg:border-r md:border-b md:border-grey-300" : i == 1 ? "md:border-b md:border-grey-300" : i == 2 ? "lg:border-r lg:border-grey-300" : i == 3 ? "" : "" )}>
             <CardContent className="p-0">
               <div className="flex items-center justify-between mb-4">
                <div className="p-2 bg-black/10 rounded-full">
@@ -134,13 +134,13 @@ export default function Dashboard() {
       </div>
 
        {/* Team Performance Chart */}
-        <Card className="col-span-2 lg:col-span-1 border-0 rounded-none shadow-none">
+        <Card className="col-span-2 lg:col-span-1 border-0 rounded-none shadow-none p-0 w-full">
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
 
-              <div className="flex flex-col gap-2"> 
-              <CardTitle className="text-lg font-semibold">Team Performance</CardTitle>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-2 w-full "> 
+              <CardTitle className="w-full md:w-fit text-lg font-semibold">Team Performance</CardTitle>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
 
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-stats-up rounded-full"></div>
@@ -154,7 +154,7 @@ export default function Dashboard() {
               </div>
 
                <Select defaultValue="all-time">
-                <SelectTrigger className="w-24 h-8 text-xs ">
+                <SelectTrigger className="w-full md:w-36 h-8 text-xs ">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -179,20 +179,20 @@ export default function Dashboard() {
 
       <Card className="col-span-2">
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex items-start md:items-center justify-between flex-col gap-4 md:flex-row">
             <CardTitle className="text-lg font-semibold">Employees</CardTitle>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 w-full md:w-64">
               <Input 
                 placeholder="Search employee" 
-                className="w-64 bg-muted/50"
+                className="w-full bg-muted/50"
               />
             </div>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center gap-4 mb-4 grid grid-cols-1 md:grid-cols-3">
             <Select defaultValue="all-offices">
-              <SelectTrigger className="w-40">
+              <SelectTrigger className="">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -201,7 +201,7 @@ export default function Dashboard() {
               </SelectContent>
             </Select>
             <Select defaultValue="all-job-titles">
-              <SelectTrigger className="w-40">
+              <SelectTrigger className="">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -210,7 +210,7 @@ export default function Dashboard() {
               </SelectContent>
             </Select>
             <Select defaultValue="all-status">
-              <SelectTrigger className="w-40">
+              <SelectTrigger className="">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
