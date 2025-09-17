@@ -227,7 +227,7 @@ export default function Recruitment() {
             className={`space-y-4 p-4 rounded-lg transition-all duration-200 ${
               dragOverStage === stage.id 
                 ? 'bg-primary/5 border-2 border-primary border-dashed' 
-                : 'bg-[#f7f7f7] border-2 border-transparent'
+                : 'bg-kanban-column border-2 border-transparent'
             }`}
             style={{ 
               minHeight: `${Math.max(200, stage.candidates.length * 120 + 100)}px`

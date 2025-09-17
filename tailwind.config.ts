@@ -85,6 +85,9 @@ export default {
           line4: "hsl(var(--chart-line-4))",
           piechart: "hsl(var(--piechart-background))"
         },
+        kanban: {
+          column: "hsl(var(--kanban-board-column-background))"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
