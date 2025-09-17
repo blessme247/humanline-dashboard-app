@@ -22,6 +22,7 @@ import {
 import { cn } from "@/lib/utils";
 import ReactEcharts from "echarts-for-react";
 import { chartOptions } from "./data";
+import EmployeeDonutChart from "./donut-chart";
 
 const statsData = [
   {
@@ -276,7 +277,7 @@ export default function Dashboard() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-col items-center space-y-4">
+            {/* <div className="flex flex-col items-center space-y-4">
               <div className="relative w-32 h-32">
                 <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
                   <path
@@ -337,7 +338,8 @@ export default function Dashboard() {
                   <span className="text-sm font-medium">23</span>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <EmployeeDonutChart/>
           </CardContent>
         </Card>
 

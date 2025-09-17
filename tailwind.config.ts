@@ -83,6 +83,7 @@ export default {
           line2: "hsl(var(--chart-line-2))",
           line3: "hsl(var(--chart-line-3))",
           line4: "hsl(var(--chart-line-4))",
+          piechart: "hsl(var(--piechart-background))"
         },
       },
       borderRadius: {

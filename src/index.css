@@ -68,6 +68,7 @@ All colors MUST be HSL.
     --chart-line-2: 45 93% 58%;
     --chart-line-3: 217.2 91.2% 59.8%;
     --chart-line-4: 280 100% 70%;
+    --piechart-background: 330 17% 98%;
 
     /* DatePicker specific variables - Light theme */
   
@@ -77,6 +78,7 @@ All colors MUST be HSL.
   --date-picker-hover: 216 34% 17%;
   --date-picker-muted: 215 20.2% 65.1%;
   --date-picker-data-in-range: 152 55% 94%;
+
   }
 
   .dark {
@@ -138,6 +140,7 @@ All colors MUST be HSL.
     --chart-line-2: 45 93% 58%;
     --chart-line-3: 217.2 91.2% 59.8%;
     --chart-line-4: 280 100% 70%;
+    --piechart-background: 330 17% 98%;
 
      /* DatePicker specific variables - Dark theme */
   --date-picker-background: 224 38% 11%;
@@ -146,6 +149,7 @@ All colors MUST be HSL.
   --date-picker-hover: 210 40% 96.1%;
   --date-picker-muted: 215.4 16.3% 46.9%;
   --date-picker-data-in-range: 152 55% 94%;
+
   }
 }
 
