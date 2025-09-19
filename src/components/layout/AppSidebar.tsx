@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { 
   Home, 
   Users, 
@@ -15,6 +15,7 @@ import {
   UserCheck,
   CalendarDays,
   LayoutGrid, 
+  Timer 
 } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
@@ -63,7 +64,7 @@ const menuItems = [
   { 
     title: "Time Off", 
     url: "/time-off", 
-    icon: Clock,
+    icon: Timer,
     defaultSubitem: "/time-off/my-time-off",
     subitems: [
       { title: "My Time Off", url: "/time-off/my-time-off", icon: Clock },
@@ -118,12 +119,15 @@ const bottomItems = [
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, isDark } = useSidebar();
   const location = useLocation();
   const navigate = useNavigate();
   const [openGroups, setOpenGroups] = useState<string[]>([]);
+  const [openGroup, setOpenGroup] = useState<string>("")
   const currentPath = location.pathname;
   const collapsed = state === "collapsed";
+
+  const sideBarIconColor = useMemo(()=> document.documentElement.classList.contains("dark") ? "#f4f4f5" : "#3f3f46", [isDark] )
 
   const isActive = (path: string) => {
     if (path === "/") return currentPath === "/";
@@ -150,6 +154,12 @@ export function AppSidebar() {
     );
   };
 
+  const toggleOpenGroup = (groupTitle:string)=> {
+    if (openGroup === groupTitle) return 
+    setOpenGroup(groupTitle) 
+  }
+
+
   const handleParentClick = (item: any, e: React.MouseEvent) => {
     e.preventDefault();
     if (item.subitems && item.defaultSubitem) {
@@ -159,7 +169,8 @@ export function AppSidebar() {
     }
     
     if (item.subitems && !collapsed) {
-      toggleGroup(item.title);
+      // toggleGroup(item.title);
+      toggleOpenGroup(item.title)
     }
   };
 
@@ -198,8 +209,10 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   {item.subitems ? (
                     <Collapsible 
-                      open={openGroups.includes(item.title) || collapsed} 
-                      onOpenChange={() => !collapsed && toggleGroup(item.title)}
+                      // open={openGroups.includes(item.title) || collapsed} 
+                      open={openGroup === item.title || collapsed} 
+                      // onOpenChange={() => !collapsed && toggleGroup(item.title)}
+                      onOpenChange={() => !collapsed && toggleOpenGroup(item.title)}
                     >
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton
@@ -207,17 +220,19 @@ export function AppSidebar() {
                           className={cn(
                             "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors group w-full",
                             isGroupActive(item)
-                              ? "bg-primary text-primary-foreground"
+                              // ? "bg-primary text-primary-foreground"
+                              ? ""
                               : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                           )}
                         >
-                          <item.icon className="w-5 h-5 shrink-0" />
+                          <item.icon className={cn("w-5 h-5 shrink-0")} color={isActive(item.url) ? "#16a249" : `${sideBarIconColor}`} />
                           {!collapsed && (
                             <>
                               <span className="flex-1 text-left">{item.title}</span>
                               <ChevronRight className={cn(
                                 "w-4 h-4 opacity-50 transition-transform",
-                                openGroups.includes(item.title) && "rotate-90"
+                                // openGroups.includes(item.title) && "rotate-90"
+                                openGroup === item.title && "rotate-90"
                               )} />
                             </>
                           )}
@@ -227,12 +242,13 @@ export function AppSidebar() {
                         <CollapsibleContent>
                           <SidebarMenuSub>
                             {item.subitems.map((subitem: any) => (
-                              <SidebarMenuSubItem key={subitem.title}>
+                              <SidebarMenuSubItem key={subitem.title} className="flex items-center">
+                                <span className="w-[12px] h-[1px] bg-sidebar-border"></span>
                                 <SidebarMenuSubButton asChild>
                                   <NavLink
                                     to={subitem.url}
                                     className={cn(
-                                      "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors",
+                                      "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ",
                                       isActive(subitem.url)
                                         ? "bg-primary/10 text-primary font-medium"
                                         : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"

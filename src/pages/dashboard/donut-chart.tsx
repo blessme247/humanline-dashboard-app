@@ -17,7 +17,6 @@ const total = data.reduce((acc, cur) => acc + cur.value, 0);
 
 export default function EmployeeDonutChart() {
   const [activeIndex, setActiveIndex] = useState(null);
-  console.log(activeIndex, 'active index')
 
   return (
     <div className="flex items-center flex-col gap-4">

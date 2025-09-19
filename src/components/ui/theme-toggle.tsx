@@ -3,14 +3,16 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useSidebar } from "./sidebar";
 import { Button } from "./button";
-import { cn } from "@/lib/utils";
+import { cn, THEME_COOKIE_NAME } from "@/lib/utils";
+
+const THEME_COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
 const TOGGLE_CLASSES =
   "text-sm font-medium flex justify-center items-center gap-2 px-4 md:pl-3 md:pr-3.5 py-0.5 transition-colors relative z-10";
 
 export const ThemeSliderToggle = () => {
-  const [isDark, setIsDark] = useState(false);
-  const { state } = useSidebar();
+  // const [isDark, setIsDark] = useState(false);
+  const { state, isDark, setIsDark } = useSidebar();
   const collapsed = state === "collapsed";
 
   const toggleTheme = () => {
@@ -21,12 +23,16 @@ export const ThemeSliderToggle = () => {
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+     // This sets the cookie to keep the theme state.
+      document.cookie = `${THEME_COOKIE_NAME}=${newIsDark ? "dark" : "light"}; path=/; max-age=${THEME_COOKIE_MAX_AGE}; SameSite=Lax`;
   };
 
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
-  }, []);
+  // const isDarkMode = document.documentElement.classList.contains("dark");
+  // console.log(isDarkMode, "is dak mode")
+  // useEffect(() => {
+  //   setIsDark(isDarkMode);
+  // }, []);
 
   if (collapsed)
     return (

@@ -159,7 +159,7 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
-    /* color: hsl(222.2 84% 4.9%); */
+    /* color: #f4f4f5; */
   }
 
   body {
