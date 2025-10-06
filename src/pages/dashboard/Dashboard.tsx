@@ -1,7 +1,5 @@
-import { TrendingUp, TrendingDown, Users, UserPlus, UserMinus, Briefcase } from "lucide-react";
+import { TrendingUp, TrendingDown, Users, Plus, Minus, BriefcaseBusiness, Calendar1, Search } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -23,6 +21,7 @@ import { cn } from "@/lib/utils";
 import ReactEcharts from "echarts-for-react";
 import { chartOptions } from "./data";
 import EmployeeDonutChart from "./donut-chart";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const statsData = [
   {
@@ -37,21 +36,21 @@ const statsData = [
     value: "1,150",
     change: "+4.10%",
     trend: "up",
-    icon: Briefcase,
+    icon: BriefcaseBusiness,
   },
   {
     title: "New Employees",
     value: "500",
     change: "+5.1%",
     trend: "up",
-    icon: UserPlus,
+    icon: Plus,
   },
   {
     title: "Resigned Employees",
     value: "93",
     change: "-25.5%",
     trend: "down",
-    icon: UserMinus,
+    icon: Minus,
   },
 ];
 
@@ -94,21 +93,21 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold text-foreground">Hi, Pristia</h1>
-        <p className="text-muted-foreground">This is your HR report so far</p>
+        <p className="text-sidebar-icon font-medium">This is your HR report so far</p>
       </div>
 
-      <Card className="pt-4 ">
+      <Card className="pt-4 rounded-[12px]">
 
-          <CardContent className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-4 p-0">
+          <CardContent className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-4 ">
 
       {/* Stats Grid */}
       <div className="col-span-2 lg:col-span-1 grid grid-cols-1 md:grid-cols-2 ">
         {statsData.map((stat, i) => (
-          <Card key={stat.title} className={cn("p-6 md:p-6  border-0 rounded-none shadow-none", i == 0 ? " lg:border-r md:border-b md:border-grey-300" : i == 1 ? "md:border-b md:border-grey-300" : i == 2 ? "lg:border-r lg:border-grey-300" : i == 3 ? "" : "" )}>
+          <Card key={stat.title} className={cn("p-6 md:p-6  border-0 rounded-none shadow-none ", i == 0 ? " lg:border-r md:border-b md:border-grey-300" : i == 1 ? "md:border-b md:border-grey-300" : i == 2 ? "lg:border-r lg:border-grey-300" : i == 3 ? "" : "" )}>
             <CardContent className="p-0">
               <div className="flex items-center justify-between mb-4">
-               <div className="p-2 bg-black/10 rounded-full">
-                  <stat.icon className="w-5 h-5 text-muted-foreground" />
+               <div className="p-2 bg-headerSearch rounded-full">
+                  <stat.icon className="w-4 h-4 text-grey-900" />
                 </div>
              
               </div>
@@ -154,14 +153,14 @@ export default function Dashboard() {
               </div>
               </div>
 
-               <Select defaultValue="all-time">
-                <SelectTrigger className="w-full md:w-36 h-8 text-xs ">
+               <Select defaultValue="month">
+                <SelectTrigger className="w-full md:w-[150px] h-8 text-xs rounded-[8px]" customIcon={<Calendar1 className="h-4 w-4 opacity-50 dark:opacity-100"  />}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all-time">All Time</SelectItem>
-                  <SelectItem value="month">This Month</SelectItem>
-                  <SelectItem value="week">This Week</SelectItem>
+                  <SelectItem value="month">Last 7 month</SelectItem>
+                  <SelectItem value="year">Last 1 year</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -182,18 +181,19 @@ export default function Dashboard() {
         <CardHeader>
           <div className="flex items-start md:items-center justify-between flex-col gap-4 md:flex-row">
             <CardTitle className="text-lg font-semibold">Employees</CardTitle>
-            <div className="flex items-center gap-4 w-full md:w-64">
+            <div className="flex items-center gap-4 w-full md:w-64 relative">
               <Input 
                 placeholder="Search employee" 
-                className="w-full bg-muted/50"
+                className="w-full border-border h-[54px] rounded-[10px] placeholder:text-sidebar-icon"
               />
+              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4 mb-4 grid grid-cols-1 md:grid-cols-3">
             <Select defaultValue="all-offices">
-              <SelectTrigger className="">
+              <SelectTrigger className="h-[54px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -202,7 +202,7 @@ export default function Dashboard() {
               </SelectContent>
             </Select>
             <Select defaultValue="all-job-titles">
-              <SelectTrigger className="">
+              <SelectTrigger className="h-[54px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -211,7 +211,7 @@ export default function Dashboard() {
               </SelectContent>
             </Select>
             <Select defaultValue="all-status">
-              <SelectTrigger className="">
+              <SelectTrigger className="h-[54px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -221,19 +221,21 @@ export default function Dashboard() {
             </Select>
           </div>
           
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Employee Name</TableHead>
-                <TableHead>Job Title</TableHead>
-                <TableHead>Line Manager</TableHead>
-                <TableHead>Department</TableHead>
-                <TableHead>Office</TableHead>
+          <Table className="border-separate border-spacing-0" >
+            <TableHeader  >
+              <TableRow className="h-[56px] " >
+                 <TableHead className="w-12 bg-headerSearch rounded-tl-[10px] rounded-bl-[10px]" > <Checkbox /></TableHead>
+                <TableHead className="bg-headerSearch">Employee Name</TableHead>
+                <TableHead className="min-w-36 bg-headerSearch">Job Title</TableHead>
+                <TableHead className="bg-headerSearch">Line Manager</TableHead>
+                <TableHead className="min-w-36 bg-headerSearch">Department</TableHead>
+                <TableHead className="min-w-36 bg-headerSearch rounded-tr-[10px] rounded-br-[10px]">Office</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {employees.map((employee) => (
                 <TableRow key={employee.id}>
+                   <TableCell><Checkbox /></TableCell>
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <Avatar className="w-8 h-8">
@@ -256,6 +258,45 @@ export default function Dashboard() {
               ))}
             </TableBody>
           </Table>
+          {/* <div className="overflow-hidden rounded-[10px] border border-border">
+  <Table className="border-collapse">
+    <TableHeader>
+      <TableRow className="bg-border hover:bg-border">
+        <TableHead className="w-12"><Checkbox /></TableHead>
+        <TableHead>Employee Name</TableHead>
+        <TableHead className="min-w-36">Job Title</TableHead>
+        <TableHead>Line Manager</TableHead>
+        <TableHead className="min-w-36">Department</TableHead>
+        <TableHead className="min-w-36">Office</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {employees.map((employee) => (
+        <TableRow key={employee.id}>
+          <TableCell><Checkbox /></TableCell>
+          <TableCell>
+            <div className="flex items-center gap-3">
+              <Avatar className="w-8 h-8">
+                <AvatarImage src={employee.avatar} />
+                <AvatarFallback>
+                  {employee.name.split(' ').map(n => n[0]).join('')}
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-medium">{employee.name}</p>
+                <p className="text-sm text-muted-foreground">{employee.email}</p>
+              </div>
+            </div>
+          </TableCell>
+          <TableCell>{employee.jobTitle}</TableCell>
+          <TableCell className="text-primary">{employee.lineManager}</TableCell>
+          <TableCell>{employee.department}</TableCell>
+          <TableCell>{employee.office}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</div> */}
         </CardContent>
       </Card>
 
@@ -265,7 +306,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg font-semibold">Total Employee</CardTitle>
               <Select defaultValue="all-time">
-                <SelectTrigger className="w-24 h-8 text-xs">
+                <SelectTrigger className="w-24 h-8 text-xs rounded-[8px] border-none">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

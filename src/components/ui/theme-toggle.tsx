@@ -56,23 +56,23 @@ export const ThemeSliderToggle = () => {
 
   return (
     // <div className="relative flex w-fit h-[35px] bg-sidebar-theme-toggle-body items-center py-1.5 px-4 rounded-full border border-red-300">
-    <div className="relative flex w-fit h-[35px] bg-foreground/10 items-center py-1.5 px-4 rounded-full border border-foreground/10">
+    <div className="relative flex w-fit h-[43px] bg-sidebar-toggleBody items-center py-1.5 px-4 rounded-full border border-sidebar-toggleBody">
       <button
-        className={`${TOGGLE_CLASSES} `}
+        className={cn(`${TOGGLE_CLASSES}`, !isDark ? "text-[#111827]" : "")}
         onClick={() => {
           toggleTheme();
         }}
       >
-        <Sun className="relative h-4 w-4 z-10 text-lg md:text-sm" />
+        <Sun className="relative h-4 w-4 z-10 text-lg md:text-sm" fill={!isDark ? "#111827" : ""} />
         <span className="relative z-10">Light</span>
       </button>
       <button
-        className={`${TOGGLE_CLASSES} `}
+        className={cn(`${TOGGLE_CLASSES}`, !isDark ? "text-[#A0AEC0]" : "")}
         onClick={() => {
           toggleTheme();
         }}
       >
-        <Moon className="relative h-4 w-4 z-10 text-lg md:text-sm" />
+        <Moon className="relative h-4 w-4 z-10 text-lg md:text-sm" fill={!isDark ? "#A0AEC0" : ""} />
         <span className="relative z-10">Dark</span>
       </button>
       <div
@@ -81,7 +81,7 @@ export const ThemeSliderToggle = () => {
         <span
           // layout
           // transition={{ type: "spring", damping: 15, stiffness: 250 }}
-          className="h-full w-1/2 rounded-full bg-background p-1 border-2 border-foreground/10"
+          className="h-full w-1/2 rounded-full bg-background p-1 border-2 border-sidebar-toggleBody"
         />
       </div>
     </div>

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { NotificationPopup } from "@/components/ui/notification-popup";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 
 export function AppHeader() {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -26,10 +26,10 @@ export function AppHeader() {
           
           {/* Search */}
           <div className="hidden md:block relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground " />
             <Input
               placeholder="Search anything..."
-              className="w-80 pl-10 bg-muted/50 border-0 focus:bg-background"
+              className="w-80 pl-10 bg-headerSearch border-0 focus:bg-background placeholder:text-sidebar-icon"
             />
              <div className="pointer-events-none absolute inset-y-0 right-2.5 flex items-center justify-center">
                     <span

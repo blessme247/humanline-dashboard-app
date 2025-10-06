@@ -70,7 +70,7 @@ export function NotificationPopup({ isOpen, onClose }: NotificationPopupProps) {
               <div 
                 key={notification.id} 
                 // className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 cursor-pointer border-b"
-                className={cn("flex items-start gap-3 p-3 hover:bg-muted/50 cursor-pointer ", i !== notifications.length - 1 ? "border-b" : "") }
+                className={cn("flex items-start gap-3 p-3 hover:bg-muted cursor-pointer ", i !== notifications.length - 1 ? "border-b" : "") }
               >
                   {IconMap[notification.category] || <Bell className="w-4 h-4 text-primary" />}
                
