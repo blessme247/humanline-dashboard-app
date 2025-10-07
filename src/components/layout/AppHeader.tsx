@@ -29,7 +29,7 @@ export function AppHeader() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground " />
             <Input
               placeholder="Search anything..."
-              className="w-80 pl-10 bg-headerSearch border-0 focus:bg-background placeholder:text-sidebar-icon"
+              className="w-80 pl-10 bg-headerSearch border-0 focus:bg-background placeholder:text-placeholder"
             />
              <div className="pointer-events-none absolute inset-y-0 right-2.5 flex items-center justify-center">
                     <span

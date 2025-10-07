@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import SearchInput from "@/components/SearchInput";
 
 const initialPipelineStages = [
   {
@@ -181,25 +182,32 @@ export default function Recruitment() {
   return (
     <div className="flex-1 space-y-6 p-6">
       {/* Header */}
-      <div className="space-y-4">
-        <div className="flex items-center text-sm text-muted-foreground">
+       <Card>
+        <CardHeader>
+        
+        
+           <div className=" grid grid-cols-12 gap-y-4">
+            <div className="space-y-2 col-span-12 md:col-span-3">
+
+          <h1 className="text-2xl font-semibold text-foreground col-span-12 md:col-span-3">Recruitment</h1>
+              <div className="flex items-center text-sm text-muted-foreground">
           <span>List Job</span>
           <span className="mx-2">›</span>
           <span>3D Designer</span>
         </div>
-        
-           <div className=" grid grid-cols-12 gap-y-4">
-          <h1 className="text-2xl font-semibold text-foreground col-span-12 md:col-span-3">Recruitment</h1>
-          <div className="flex items-center gap-4 col-span-12 md:col-span-9 md:justify-self-end grid grid-cols-2 ">
-            <div className="relative col-span-2 sm:col-span-1 w-full sm:w-64">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            </div>
+          {/* <div className="flex items-center gap-4 md:gap-0 col-span-12 md:col-span-9 md:justify-self-end grid grid-cols-2 "> */}
+          <div className="flex flex-col sm:flex-row  sm:items-center gap-4 md:gap-8 col-span-12 md:col-span-9 md:justify-self-end ">
+            <div className="relative col-span-2 sm:col-span-1 w-full sm:w-64  ">
+              {/* <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Search what you need"
-                className="w-full pl-10 bg-muted/50 border-0"
-              />
+                className="w-full pl-10  border-0  border border-border placeholder:text-placeholder"
+              /> */}
+              <SearchInput placeholder="Search what you need" />
             </div>
 
-            <div className="flex items-center gap-4 col-span-2 sm:col-span-1">
+            <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
            
             <Button variant="tertiary" className="flex items-center gap-2">
               Add Candidates
@@ -217,9 +225,15 @@ export default function Recruitment() {
           </div>
           </div>
         </div>
-      </div>
+    
+        </CardHeader>
+        <CardContent>
+    
 
       {/* Kanban Board */}
+     
+
+       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {pipelineStages.map((stage) => (
           <div 
@@ -227,7 +241,7 @@ export default function Recruitment() {
             className={`space-y-4 p-4 rounded-lg transition-all duration-200 ${
               dragOverStage === stage.id 
                 ? 'bg-primary/5 border-2 border-primary border-dashed' 
-                : 'bg-kanban-column border-2 border-transparent'
+                : 'bg-muted border-2 border-transparent'
             }`}
             style={{ 
               minHeight: `${Math.max(200, stage.candidates.length * 120 + 100)}px`
@@ -329,6 +343,8 @@ export default function Recruitment() {
           </div>
         ))}
       </div>
+       </CardContent>
+      </Card>
     </div>
   );
 }

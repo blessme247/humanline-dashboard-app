@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,7 +85,15 @@ All colors MUST be HSL.
   --date-picker-muted: 215 20.2% 65.1%;
   --date-picker-data-in-range: 152 55% 94%;
 
+   /* --date-picker-background: 0 0% 100%;
+  --date-picker-foreground: 222.2 84% 4.9%;
+  --date-picker-border: 214.3 31.8% 91.4%;
+  --date-picker-hover: 210 40% 96.1%;
+  --date-picker-muted: 215.4 16.3% 46.9%;
+  --date-picker-data-in-range: 142 76% 95%; */
+
   --app-header-search: 0 0% 97%;
+  --placeholder: 214 20% 69%;
 
   }
 
@@ -163,8 +173,15 @@ All colors MUST be HSL.
   --date-picker-muted: 215.4 16.3% 46.9%;
   --date-picker-data-in-range: 152 55% 94%;
 
+    /* --date-picker-background: 222.2 84% 4.9%;
+  --date-picker-foreground: 210 40% 98%;
+  --date-picker-border: 217.2 32.6% 17.5%;
+  --date-picker-hover: 217.2 32.6% 20%;
+  --date-picker-muted: 215 20.2% 65.1%;
+  --date-picker-data-in-range: 142 76% 15%; */
+
   --app-header-search: 217 19% 24%;
-  --placeholder: ;
+  --placeholder: 216 13% 47%;
 
   }
 }
@@ -172,8 +189,21 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
-    /* color: hsl(221, 39%, 11%); */
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    /* color: hsl(214, 20%, 69%) */
   }
+
+  /* tbody tr td {
+    border-bottom: 1px solid hsl(220 7% 92%);
+  } */
+
+  /* .dark {
+    tbody tr td {
+    border-bottom: 1px solid hsl(217, 19%, 24%)
+  }
+} */
 
   body {
     @apply bg-background text-foreground;

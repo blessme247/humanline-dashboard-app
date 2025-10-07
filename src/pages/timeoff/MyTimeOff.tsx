@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Search, ChevronLeft, ChevronRight, FileDown } from "lucide-react";
+import {  Search, ChevronLeft, ChevronRight, FileDown, Calendar1, File, FileDownIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -171,13 +171,13 @@ export default function EmployeeRequests() {
     switch (status) {
       case "approve":
         return (
-          <Badge variant="secondary" className="bg-success/10 text-success hover:bg-success/20">
+          <Badge variant="success" >
             APPROVE
           </Badge>
         );
       case "pending":
         return (
-          <Badge variant="secondary" className="bg-warning/10 text-warning hover:bg-warning/20">
+          <Badge variant="warning" >
             PENDING
           </Badge>
         );
@@ -190,14 +190,14 @@ export default function EmployeeRequests() {
     <div className="flex-1  p-6">
        <Card className="space-y-6">
            <CardHeader className='grid grid-cols-12 gap-y-4 items-center'>
-             <CardTitle className="col-span-12 md:col-span-3">My Time Off</CardTitle>
+             <CardTitle className="col-span-12 md:col-span-3">Employee Requests</CardTitle>
 
              <div className='col-span-12 md:col-span-9 sm:justify-self-end flex flex-col sm:flex-row gap-y-3 items-center gap-x-3 '>
                 <div className="relative w-full sm:w-[300px]">
-          <Input placeholder="Search employee" className="pl-10 w-full" />
-          <Search className="w-4 h-4 absolute right-3 top-3 text-muted-foreground" />
+          <Input placeholder="Search employee" className="pl-10 w-full border-border  rounded-[10px] placeholder:text-placeholder" />
+          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         </div>
-         <Button variant="tertiary" className="w-full  sm:w-fit flex items-center gap-2">
+         <Button variant="tertiary" className="w-full  sm:w-fit flex items-center gap-2 ">
           <FileDown className="w-4 h-4" />
           Download CSV
         </Button>
@@ -210,14 +210,14 @@ export default function EmployeeRequests() {
         <DatePickerComponent label="" popoverTriggerElement={<Button
           variant="outline"
           // onClick={() => setShowCalendar(!showCalendar)}
-          className="flex items-center justify-between"
+          className="flex items-center justify-between border-border rounded-[10px] "
         >
           01 Jan 2023 - 10 Mar 2023
-          <Calendar className="w-4 h-4" />
+          <Calendar1 className="w-4 h-4" />
         </Button>} />
         
         <Select defaultValue="all-type">
-          <SelectTrigger className="col-span-1">
+          <SelectTrigger className="col-span-1 ">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -227,7 +227,7 @@ export default function EmployeeRequests() {
           </SelectContent>
         </Select>
         <Select defaultValue="all-status">
-          <SelectTrigger className="col-span-1">
+          <SelectTrigger className="col-span-1 ">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -300,8 +300,8 @@ export default function EmployeeRequests() {
           <CardContent className="p-0">
             <Table>
               <TableHeader>
-                <TableRow>
-                  <TableHead className="w-12">
+                <TableRow className="h-[56px] ">
+                  <TableHead className="w-12 rounded-tl-[10px] rounded-bl-[10px]" role="checkbox">
                     <Checkbox />
                   </TableHead>
                   <TableHead >Employee Name</TableHead>
@@ -310,7 +310,7 @@ export default function EmployeeRequests() {
                   <TableHead className="min-w-36">Total</TableHead>
                   <TableHead>Type</TableHead>
                   <TableHead>Attachment</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead className="rounded-tr-[10px] rounded-br-[10px]">Status</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -343,9 +343,18 @@ export default function EmployeeRequests() {
                     <TableCell>{request.type}</TableCell>
                     <TableCell>
                       {request.attachment ? (
-                        <span className="text-primary cursor-pointer">{request.attachment}</span>
+                        <div className="flex items-center justify-between">
+
+                          <span className=" cursor-pointer">{request.attachment}</span>
+                          <FileDownIcon className="w-4 h-4 text-[#A0AEC0]" />
+                        </div>
                       ) : (
-                        "-"
+                        // "-"
+                         <div className="flex items-center justify-between">
+
+                          <span className=" cursor-pointer">-</span>
+                          <FileDownIcon className="w-4 h-4 text-[#A0AEC0]" />
+                        </div>
                       )}
                     </TableCell>
                     <TableCell>{getStatusBadge(request.status)}</TableCell>

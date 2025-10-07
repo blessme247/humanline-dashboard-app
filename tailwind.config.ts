@@ -90,7 +90,8 @@ export default {
         kanban: {
           column: "hsl(var(--kanban-board-column-background))"
         },
-        headerSearch: "hsl(var(--app-header-search))"
+        headerSearch: "hsl(var(--app-header-search))",
+        placeholder: "hsl(var(--placeholder))"
       },
       borderRadius: {
         lg: "var(--radius)",

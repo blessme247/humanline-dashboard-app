@@ -184,7 +184,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-4 w-full md:w-64 relative">
               <Input 
                 placeholder="Search employee" 
-                className="w-full border-border h-[54px] rounded-[10px] placeholder:text-sidebar-icon"
+                className="w-full border-border  rounded-[10px] placeholder:text-placeholder"
               />
               <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             </div>
@@ -193,7 +193,7 @@ export default function Dashboard() {
         <CardContent>
           <div className="flex items-center gap-4 mb-4 grid grid-cols-1 md:grid-cols-3">
             <Select defaultValue="all-offices">
-              <SelectTrigger className="h-[54px]">
+              <SelectTrigger className="">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -202,7 +202,7 @@ export default function Dashboard() {
               </SelectContent>
             </Select>
             <Select defaultValue="all-job-titles">
-              <SelectTrigger className="h-[54px]">
+              <SelectTrigger className="">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -211,7 +211,7 @@ export default function Dashboard() {
               </SelectContent>
             </Select>
             <Select defaultValue="all-status">
-              <SelectTrigger className="h-[54px]">
+              <SelectTrigger className="">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -221,21 +221,21 @@ export default function Dashboard() {
             </Select>
           </div>
           
-          <Table className="border-separate border-spacing-0" >
+          <Table className="" >
             <TableHeader  >
               <TableRow className="h-[56px] " >
-                 <TableHead className="w-12 bg-headerSearch rounded-tl-[10px] rounded-bl-[10px]" > <Checkbox /></TableHead>
-                <TableHead className="bg-headerSearch">Employee Name</TableHead>
-                <TableHead className="min-w-36 bg-headerSearch">Job Title</TableHead>
-                <TableHead className="bg-headerSearch">Line Manager</TableHead>
-                <TableHead className="min-w-36 bg-headerSearch">Department</TableHead>
-                <TableHead className="min-w-36 bg-headerSearch rounded-tr-[10px] rounded-br-[10px]">Office</TableHead>
+                 <TableHead className="w-12  rounded-tl-[10px] rounded-bl-[10px]" role="checkbox" > <Checkbox /></TableHead>
+                <TableHead className="">Employee Name</TableHead>
+                <TableHead className="min-w-36 ">Job Title</TableHead>
+                <TableHead className="">Line Manager</TableHead>
+                <TableHead className="min-w-36 ">Department</TableHead>
+                <TableHead className="min-w-36  rounded-tr-[10px] rounded-br-[10px]">Office</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {employees.map((employee) => (
-                <TableRow key={employee.id}>
-                   <TableCell><Checkbox /></TableCell>
+                <TableRow key={employee.id} className="">
+                   <TableCell className=""><Checkbox /></TableCell>
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <Avatar className="w-8 h-8">
