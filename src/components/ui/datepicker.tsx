@@ -13,13 +13,13 @@ type DatePickerProps = {
     type?: 'default' | 'range' | 'multiple';
     // minDate?: Date;
     // maxDate?: Date;
+    value: DatesRangeValue;
+  onChange: (value: DatesRangeValue) => void;
     popoverTriggerElement?: React.ReactNode;
 }
 
-const DatePickerComponent = ({ label, type = "range", popoverTriggerElement }: DatePickerProps) => {
+const DatePickerComponent = ({ label, type = "range", popoverTriggerElement, value, onChange }: DatePickerProps) => {
     const [open, setOpen] = useState(false);
-    // const [value, setValue] = useState<string | DatesRangeValue<string> | string[] | null>(null);
-    const [value, setValue] = useState<[string | null, string | null]>([null, null]);
   
     return (
      <Popover open={open} onOpenChange={setOpen}>
@@ -46,16 +46,17 @@ const DatePickerComponent = ({ label, type = "range", popoverTriggerElement }: D
         </PopoverTrigger>
         <PopoverContent
           className={cn(
-            ` max-h-[--radix-popover-content-available-height] overflow-y-scroll p-0 min-w-[var(--radix-popover-trigger-width)]  z-[100] bg-tertiary pl-3`
+            // ` max-h-[--radix-popover-content-available-height] overflow-y-scroll p-0 min-w-[var(--radix-popover-trigger-width)]  z-[100]  pl-3`
+            ` max-h-[--radix-popover-content-available-height] overflow-y-scroll p-0 min-w-[320px]  z-[100]  pl-3`
           )}
           align="start"
         >
           <DatePicker
         //   className="!bg-tertiary"
           allowSingleDateInRange
-          type={type}
+          type={'range'}
             value={value}
-            onChange={setValue}
+            onChange={onChange}
           />
         </PopoverContent>
         {/* {errors && (

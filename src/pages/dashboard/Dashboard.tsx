@@ -1,15 +1,6 @@
 import { TrendingUp, TrendingDown, Users, Plus, Minus, BriefcaseBusiness, Calendar1, Search } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import {
   Select,
   SelectContent,
@@ -21,7 +12,7 @@ import { cn } from "@/lib/utils";
 import ReactEcharts from "echarts-for-react";
 import { chartOptions } from "./data";
 import EmployeeDonutChart from "./donut-chart";
-import { Checkbox } from "@/components/ui/checkbox";
+import EmployeesTable from "./employees-table";
 
 const statsData = [
   {
@@ -221,82 +212,8 @@ export default function Dashboard() {
             </Select>
           </div>
           
-          <Table className="" >
-            <TableHeader  >
-              <TableRow className="h-[56px] " >
-                 <TableHead className="w-12  rounded-tl-[10px] rounded-bl-[10px]" role="checkbox" > <Checkbox /></TableHead>
-                <TableHead className="">Employee Name</TableHead>
-                <TableHead className="min-w-36 ">Job Title</TableHead>
-                <TableHead className="">Line Manager</TableHead>
-                <TableHead className="min-w-36 ">Department</TableHead>
-                <TableHead className="min-w-36  rounded-tr-[10px] rounded-br-[10px]">Office</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {employees.map((employee) => (
-                <TableRow key={employee.id} className="">
-                   <TableCell className=""><Checkbox /></TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-3">
-                      <Avatar className="w-8 h-8">
-                        <AvatarImage src={employee.avatar} />
-                        <AvatarFallback>
-                          {employee.name.split(' ').map(n => n[0]).join('')}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-medium">{employee.name}</p>
-                        <p className="text-sm text-muted-foreground">{employee.email}</p>
-                      </div>
-                    </div>
-                  </TableCell>
-                  <TableCell>{employee.jobTitle}</TableCell>
-                  <TableCell className="text-primary">{employee.lineManager}</TableCell>
-                  <TableCell>{employee.department}</TableCell>
-                  <TableCell>{employee.office}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          {/* <div className="overflow-hidden rounded-[10px] border border-border">
-  <Table className="border-collapse">
-    <TableHeader>
-      <TableRow className="bg-border hover:bg-border">
-        <TableHead className="w-12"><Checkbox /></TableHead>
-        <TableHead>Employee Name</TableHead>
-        <TableHead className="min-w-36">Job Title</TableHead>
-        <TableHead>Line Manager</TableHead>
-        <TableHead className="min-w-36">Department</TableHead>
-        <TableHead className="min-w-36">Office</TableHead>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      {employees.map((employee) => (
-        <TableRow key={employee.id}>
-          <TableCell><Checkbox /></TableCell>
-          <TableCell>
-            <div className="flex items-center gap-3">
-              <Avatar className="w-8 h-8">
-                <AvatarImage src={employee.avatar} />
-                <AvatarFallback>
-                  {employee.name.split(' ').map(n => n[0]).join('')}
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="font-medium">{employee.name}</p>
-                <p className="text-sm text-muted-foreground">{employee.email}</p>
-              </div>
-            </div>
-          </TableCell>
-          <TableCell>{employee.jobTitle}</TableCell>
-          <TableCell className="text-primary">{employee.lineManager}</TableCell>
-          <TableCell>{employee.department}</TableCell>
-          <TableCell>{employee.office}</TableCell>
-        </TableRow>
-      ))}
-    </TableBody>
-  </Table>
-</div> */}
+         <EmployeesTable />
+        
         </CardContent>
       </Card>
 

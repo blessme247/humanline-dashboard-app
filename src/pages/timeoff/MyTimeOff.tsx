@@ -22,6 +22,9 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import DatePickerComponent from "@/components/ui/datepicker";
+import { DatePicker, DatesRangeValue } from "@mantine/dates";
+import { format } from "date-fns";
+import RequestsTable from "./requests-table";
 
 const timeOffRequests = [
   {
@@ -125,47 +128,12 @@ const employees = [
   },
 ];
 
-const calendarDays = [
-  { day: 29, month: "prev", disabled: true },
-  { day: 30, month: "prev", disabled: true },
-  { day: 31, month: "prev", disabled: true },
-  { day: 1, month: "current" },
-  { day: 2, month: "current" },
-  { day: 3, month: "current" },
-  { day: 4, month: "current" },
-  { day: 5, month: "current" },
-  { day: 6, month: "current" },
-  { day: 7, month: "current" },
-  { day: 8, month: "current" },
-  { day: 9, month: "current", selected: true },
-  { day: 10, month: "current", selected: true },
-  { day: 11, month: "current", selected: true },
-  { day: 12, month: "current" },
-  { day: 13, month: "current" },
-  { day: 14, month: "current" },
-  { day: 15, month: "current", highlighted: true },
-  { day: 16, month: "current" },
-  { day: 17, month: "current" },
-  { day: 18, month: "current" },
-  { day: 19, month: "current" },
-  { day: 20, month: "current" },
-  { day: 21, month: "current" },
-  { day: 22, month: "current" },
-  { day: 23, month: "current" },
-  { day: 24, month: "current" },
-  { day: 25, month: "current" },
-  { day: 26, month: "current" },
-  { day: 27, month: "current" },
-  { day: 28, month: "current" },
-  { day: 29, month: "current" },
-  { day: 30, month: "current" },
-  { day: 31, month: "current" },
-  { day: 1, month: "next", disabled: true },
-];
 
 export default function EmployeeRequests() {
   const [showCalendar, setShowCalendar] = useState(false);
    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  //  const [value, setValue] = useState<[Date, Date]>([new Date(2021, 11, 1), new Date(2021, 11, 5)]);
+     const [dateRange, setDateRange] = useState<DatesRangeValue>([new Date(2021, 11, 1), new Date(2021, 11, 5)])
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -184,6 +152,22 @@ export default function EmployeeRequests() {
       default:
         return <Badge variant="secondary">{status.toUpperCase()}</Badge>;
     }
+  };
+
+    // Format the date range for display
+  const getDisplayValue = () => {
+    if (!dateRange) return "";
+    
+    // if (dateRange) {
+      const [start, end] = dateRange as [Date | null, Date | null];
+      if (start && end) {
+        return `${format(start, 'dd MMM yyyy')} - ${format(end, 'dd MMM yyyy')}`;
+      }
+      if (start) {
+        return format(start, 'dd MMM yyyy');
+      }
+    // } 
+    // return "";
   };
 
   return (
@@ -207,14 +191,25 @@ export default function EmployeeRequests() {
            <CardContent className="space-y-6">
            {/* Filters */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <DatePickerComponent label="" popoverTriggerElement={<Button
+        <DatePickerComponent value={dateRange} onChange={setDateRange} label="" popoverTriggerElement={<Button
           variant="outline"
-          // onClick={() => setShowCalendar(!showCalendar)}
           className="flex items-center justify-between border-border rounded-[10px] "
         >
-          01 Jan 2023 - 10 Mar 2023
+          {/* 01 Jan 2023 - 10 Mar 2023 */}
+          
+          {/* {`${value[0].toLocaleDateString()} - ${value[1].toLocaleDateString()}`} */}
+          {getDisplayValue()}
           <Calendar1 className="w-4 h-4" />
         </Button>} />
+            {/* <DatePicker
+            className="border-border rounded-[10px]"
+            type="range"
+      label=""
+      placeholder="Pick dates range"
+      value={value}
+      onChange={setValue}
+    /> */}
+        
         
         <Select defaultValue="all-type">
           <SelectTrigger className="col-span-1 ">
@@ -239,170 +234,10 @@ export default function EmployeeRequests() {
       </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Calendar Card */}
-        {showCalendar && (
-          <Card className="lg:col-span-1">
-            <CardHeader>
-              <CardTitle className="text-lg font-semibold flex items-center justify-between">
-                Set Date
-                <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="icon" className="w-6 h-6">
-                    <ChevronLeft className="w-4 h-4" />
-                  </Button>
-                  <span className="text-sm font-medium">January 2023</span>
-                  <Button variant="ghost" size="icon" className="w-6 h-6">
-                    <ChevronRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="grid grid-cols-7 gap-1 text-center text-xs text-muted-foreground">
-                  <div>Mon</div>
-                  <div>Tue</div>
-                  <div>Wed</div>
-                  <div>Thu</div>
-                  <div>Fri</div>
-                  <div>Sat</div>
-                  <div>Sun</div>
-                </div>
-                <div className="grid grid-cols-7 gap-1">
-                  {calendarDays.map((day, index) => (
-                    <button
-                      key={index}
-                      className={`
-                        w-8 h-8 text-xs rounded-md transition-colors
-                        ${day.disabled ? 'text-muted-foreground/50' : 'text-foreground hover:bg-muted'}
-                        ${day.selected ? 'bg-primary text-primary-foreground' : ''}
-                        ${day.highlighted ? 'bg-primary/20 text-primary' : ''}
-                      `}
-                    >
-                      {day.day}
-                    </button>
-                  ))}
-                </div>
-                <div className="flex gap-2 pt-4">
-                  <Button variant="outline" size="sm" className="flex-1">
-                    Cancel
-                  </Button>
-                  <Button size="sm" className="flex-1">
-                    Save
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+   
 
         {/* Requests Table */}
-        <Card className={showCalendar ? "lg:col-span-3" : "lg:col-span-4"}>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow className="h-[56px] ">
-                  <TableHead className="w-12 rounded-tl-[10px] rounded-bl-[10px]" role="checkbox">
-                    <Checkbox />
-                  </TableHead>
-                  <TableHead >Employee Name</TableHead>
-                  <TableHead className="min-w-36">From</TableHead>
-                  <TableHead className="min-w-36">To</TableHead>
-                  <TableHead className="min-w-36">Total</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Attachment</TableHead>
-                  <TableHead className="rounded-tr-[10px] rounded-br-[10px]">Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {timeOffRequests.map((request) => {
-                  const employee = employees.find(emp => emp.id === request.id);
-                  return (
-                  <TableRow key={request.id}>
-                    <TableCell>
-                      <Checkbox />
-                    </TableCell>
-                    <TableCell>
-                      {/* <Checkbox /> */}
-                      <div key={employee.id} className="flex items-center gap-3">
-                  <Avatar className="w-8 h-8">
-                    <AvatarImage src={employee.avatar} />
-                    <AvatarFallback>
-                      {employee.name.split(' ').map(n => n[0]).join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <p className="font-medium text-sm">{employee.name}</p>
-                    <p className="text-xs text-muted-foreground">{employee.email}</p>
-                  </div>
-                  {/* <span className="text-sm text-muted-foreground">{employee.date}</span> */}
-                </div>
-                    </TableCell>
-                    <TableCell>{request.from}</TableCell>
-                    <TableCell>{request.to}</TableCell>
-                    <TableCell>{request.total}</TableCell>
-                    <TableCell>{request.type}</TableCell>
-                    <TableCell>
-                      {request.attachment ? (
-                        <div className="flex items-center justify-between">
-
-                          <span className=" cursor-pointer">{request.attachment}</span>
-                          <FileDownIcon className="w-4 h-4 text-[#A0AEC0]" />
-                        </div>
-                      ) : (
-                        // "-"
-                         <div className="flex items-center justify-between">
-
-                          <span className=" cursor-pointer">-</span>
-                          <FileDownIcon className="w-4 h-4 text-[#A0AEC0]" />
-                        </div>
-                      )}
-                    </TableCell>
-                    <TableCell>{getStatusBadge(request.status)}</TableCell>
-                  </TableRow>
-                )})}
-              </TableBody>
-            </Table>
-
-       
-            {/* Pagination */}
-            <div className="border-t p-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Button variant="ghost" size="icon" className="w-8 h-8">
-                  <ChevronLeft className="w-4 h-4" />
-                </Button>
-                <Button variant="ghost" size="sm" className="w-8 h-8 bg-tertiary text-tertiary-foreground">
-                  1
-                </Button>
-                <Button variant="ghost" size="sm" className="hidden md:inline-flex w-8 h-8">
-                  2
-                </Button>
-                <Button variant="ghost" size="sm" className="hidden md:inline-flex w-8 h-8">
-                  3
-                </Button>
-                <span className="hidden md:inline-flex text-muted-foreground">...</span>
-                <Button variant="ghost" size="sm" className="hidden md:inline-flex w-8 h-8">
-                  10
-                </Button>
-                <Button variant="ghost" size="icon" className="w-8 h-8">
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="hidden md:inline-flex text-sm text-muted-foreground">Showing 1 to 6 of 50 entries</span>
-                <Select defaultValue="6">
-                  <SelectTrigger className="w-24 h-8">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="6">Show 6</SelectItem>
-                    <SelectItem value="16">Show 16</SelectItem>
-                    <SelectItem value="24">Show 24</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <RequestsTable/>
       </div>
            </CardContent>
          </Card>
