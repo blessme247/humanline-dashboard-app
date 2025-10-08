@@ -1,18 +1,10 @@
 import { useState } from "react";
-import {  Search, ChevronLeft, ChevronRight, FileDown, Calendar1, File, FileDownIcon } from "lucide-react";
+import {  Search, FileDown, Calendar1,  } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import {
   Select,
   SelectContent,
@@ -20,113 +12,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import DatePickerComponent from "@/components/ui/datepicker";
 import { DatePicker, DatesRangeValue } from "@mantine/dates";
 import { format } from "date-fns";
 import RequestsTable from "./requests-table";
 
-const timeOffRequests = [
-  {
-    id: 1,
-    from: "01 Mar 2023",
-    to: "03 Mar 2023",
-    total: "3 Days",
-    type: "Engagement",
-    attachment: null,
-    status: "approve",
-  },
-  {
-    id: 2,
-    from: "01 Mar 2023",
-    to: "03 Mar 2023",
-    total: "3 Days",
-    type: "Engagement",
-    attachment: "File.pdf",
-    status: "approve",
-  },
-  {
-    id: 3,
-    from: "01 Mar 2023",
-    to: "03 Mar 2023",
-    total: "3 Days",
-    type: "Engagement",
-    attachment: "File.pdf",
-    status: "pending",
-  },
-  {
-    id: 4,
-    from: "01 Mar 2023",
-    to: "03 Mar 2023",
-    total: "3 Days",
-    type: "Engagement",
-    attachment: null,
-    status: "approve",
-  },
-  {
-    id: 5,
-    from: "01 Mar 2023",
-    to: "03 Mar 2023",
-    total: "3 Days",
-    type: "Engagement",
-    attachment: "File.pdf",
-    status: "pending",
-  },
-  {
-    id: 6,
-    from: "01 Mar 2023",
-    to: "03 Mar 2023",
-    total: "3 Days",
-    type: "Engagement",
-    attachment: null,
-    status: "approve",
-  },
-];
-
-const employees = [
-  {
-    id: 1,
-    name: "Jordyn George",
-    email: "jordyn@unpixel.com",
-    avatar: "/avatars/jordyn.jpg",
-    date: "01 Mar 2023",
-  },
-  {
-    id: 2,
-    name: "Skylar Herwitz",
-    email: "skylar@unpixel.com",
-    avatar: "/avatars/skylar.jpg",
-    date: "01 Mar 2023",
-  },
-  {
-    id: 3,
-    name: "Kathryn Murphy",
-    email: "kathryn@unpixel.com",
-    avatar: "/avatars/kathryn.jpg",
-    date: "01 Mar 2023",
-  },
-  {
-    id: 4,
-    name: "Cameron Williamson",
-    email: "cameron@unpixel.com",
-    avatar: "/avatars/cameron.jpg",
-    date: "01 Mar 2023",
-  },
-  {
-    id: 5,
-    name: "Esther Howard",
-    email: "esther@unpixel.com",
-    avatar: "/avatars/esther.jpg",
-    date: "01 Mar 2023",
-  },
-  {
-    id: 6,
-    name: "Jenny Wilson",
-    email: "jenny@unpixel.com",
-    avatar: "/avatars/jenny.jpg",
-    date: "01 Mar 2023",
-  },
-];
 
 
 export default function EmployeeRequests() {
@@ -174,7 +64,7 @@ export default function EmployeeRequests() {
     <div className="flex-1  p-6">
        <Card className="space-y-6">
            <CardHeader className='grid grid-cols-12 gap-y-4 items-center'>
-             <CardTitle className="col-span-12 md:col-span-3">Employee Requests</CardTitle>
+             <CardTitle className="col-span-12 md:col-span-3 text-2xl">Employee Requests</CardTitle>
 
              <div className='col-span-12 md:col-span-9 sm:justify-self-end flex flex-col sm:flex-row gap-y-3 items-center gap-x-3 '>
                 <div className="relative w-full sm:w-[300px]">

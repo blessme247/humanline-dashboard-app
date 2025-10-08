@@ -189,11 +189,11 @@ export default function Recruitment() {
            <div className=" grid grid-cols-12 gap-y-4">
             <div className="space-y-2 col-span-12 md:col-span-3">
 
-          <h1 className="text-2xl font-semibold text-foreground col-span-12 md:col-span-3">Recruitment</h1>
+          <h1 className="text-2xl font-bold text-sidebar-foreground col-span-12 md:col-span-3">Recruitment</h1>
               <div className="flex items-center text-sm text-muted-foreground">
           <span>List Job</span>
-          <span className="mx-2">›</span>
-          <span>3D Designer</span>
+          <span className="mx-2 text-sidebar-foreground">›</span>
+          <span className="text-sidebar-foreground">3D Designer</span>
         </div>
             </div>
           {/* <div className="flex items-center gap-4 md:gap-0 col-span-12 md:col-span-9 md:justify-self-end grid grid-cols-2 "> */}
@@ -253,11 +253,11 @@ export default function Recruitment() {
           >
             {/* Stage Header */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <h3 className="font-medium">{stage.title}</h3>
+              <div className="flex items-center gap-[10px]">
+                <h3 className="font-bold text-sm">{stage.title}</h3>
                 <Badge 
                   variant="secondary" 
-                  className={`${stage.bgColor} ${stage.color} text-xs border-primary bg-transparent rounded-md px-1.5`}
+                  className={`${stage.bgColor} ${stage.color} text-xs border-[1.5px] border-primary bg-transparent rounded-md px-1.5`}
                 >
                   {stage.candidates.length}
                 </Badge>
@@ -291,16 +291,30 @@ export default function Recruitment() {
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <p className="font-medium text-sm">{candidate.name}</p>
+                          <p className="font-semibold text-sm text-sidebar-foreground">{candidate.name}</p>
                           <p className="text-xs text-muted-foreground">{candidate.email}</p>
                         </div>
                       </div>
-                      <DropdownMenu>
+                     
+                    </div>
+
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <MessageSquareText className="w-4 h-4 rounded flex items-center justify-center" />
+                        <span>{candidate.comments}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-4 h-4 rounded border flex items-center justify-center">
+                          👍
+                        </div>
+                        <span>{candidate.likes}</span>
+                      </div>
+                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button 
                             variant="ghost" 
                             size="icon" 
-                            className="w-8 h-8"
+                            className="w-8 h-8 ml-auto"
                             onMouseDown={(e) => e.stopPropagation()}
                           >
                             <MoreHorizontal className="w-4 h-4" />
@@ -315,19 +329,6 @@ export default function Recruitment() {
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
-                    </div>
-
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <MessageSquareText className="w-4 h-4 rounded flex items-center justify-center" />
-                        <span>{candidate.comments}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <div className="w-4 h-4 rounded border flex items-center justify-center">
-                          👍
-                        </div>
-                        <span>{candidate.likes}</span>
-                      </div>
                     </div>
                   </CardContent>
                 </Card>

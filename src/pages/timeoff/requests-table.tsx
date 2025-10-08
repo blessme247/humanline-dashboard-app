@@ -195,7 +195,7 @@ const RequestsTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-xs font-bold w-full"
             >
               Employee Name
  
@@ -223,9 +223,9 @@ const RequestsTable = () => {
                     .join("")}
                 </AvatarFallback>
               </Avatar>
-              <div className="flex-1">
-                <p className="font-medium text-sm">{employee.name}</p>
-                <p className="text-xs text-muted-foreground">{employee.email}</p>
+              <div className="flex-1 gap-3">
+                <p className="">{employee.name}</p>
+                <p className="text-[10px] text-[#A0AEC0]">{employee.email}</p>
               </div>
             </div>
           );
@@ -238,7 +238,7 @@ const RequestsTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-[12px] font-bold w-full"
             >
               From
               {column.getIsSorted() === "asc" ? (
@@ -259,7 +259,7 @@ const RequestsTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-[12px] font-bold w-full"
             >
               To
               {column.getIsSorted() === "asc" ? (
@@ -280,7 +280,7 @@ const RequestsTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-[12px] font-bold w-full"
             >
               Total
               {column.getIsSorted() === "asc" ? (
@@ -302,7 +302,7 @@ const RequestsTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-[12px] font-bold w-full"
             >
               Type
               {column.getIsSorted() === "asc" ? (
@@ -325,7 +325,7 @@ const RequestsTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-[12px] font-bold w-full"
             >
               Attachment
               {column.getIsSorted() === "asc" ? (
@@ -355,7 +355,7 @@ const RequestsTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium"
+              className="hover:bg-transparent p-0 h-auto text-[12px] font-bold"
             >
               Status
             

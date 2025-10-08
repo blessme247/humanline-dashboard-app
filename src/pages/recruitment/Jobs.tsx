@@ -42,7 +42,7 @@ const Jobs = () => {
     <div className="p-6 space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Jobs</h1>
+          <h4 className="text-2xl font-bold text-foreground">Jobs</h4>
           <p className="text-muted-foreground">Manage your job postings and openings</p>
         </div>
         <Button variant="tertiary" className="flex items-center gap-2">
