@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { cn } from "@/lib/utils";
+// import { useState } from "react";
 import {
   PieChart,
   Pie,
@@ -8,15 +9,15 @@ import {
 } from "recharts";
 
 const data = [
-    { name: "Others", value: 71, color: "#22C55E" },       // Green
-    { name: "Onboarding", value: 27, color: "#FACC15" },   // Yellow
-    { name: "Offboarding", value: 23, color: "#3B82F6" },  // Blue
+    { name: "Others", value: 71, color: "#27A376" },       // Green
+    { name: "Onboarding", value: 27, color: "#FFD203" },   // Yellow
+    { name: "Offboarding", value: 23, color: "#2F78EE" },  // Blue
 ];
 
 const total = data.reduce((acc, cur) => acc + cur.value, 0);
 
 export default function EmployeeDonutChart() {
-  const [activeIndex, setActiveIndex] = useState(null);
+  // const [activeIndex, setActiveIndex] = useState(null);
 
   return (
     <div className="flex items-center flex-col gap-4">
@@ -30,8 +31,8 @@ export default function EmployeeDonutChart() {
               innerRadius={60}
               outerRadius={90}
               paddingAngle={5}
-              onMouseEnter={(_, index) => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
+              // onMouseEnter={(_, index) => setActiveIndex(index)}
+              // onMouseLeave={() => setActiveIndex(null)}
             >
               {data.map((entry, index) => (
                 <Cell
@@ -40,6 +41,7 @@ export default function EmployeeDonutChart() {
                   cursor="pointer"
                   className="origin-center outline-none transition-transform duration-250
                 ease-out hover:scale-105 focus:outline-none"
+            // className={cn("origin-center outline-none transition-transform duration-250 ease-out focus:outline-none", entry.name === "Onboarding" ? "scale-105" : "")}
                 />
               ))}
             </Pie>

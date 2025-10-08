@@ -73,6 +73,8 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+          icon: "hsl(var(--sidebar-icon))",
+          toggleBody: "hsl(var(--sidebar-theme-toggle-body))"
         },
         stats: {
           up: "hsl(var(--stats-up))",
@@ -87,7 +89,9 @@ export default {
         },
         kanban: {
           column: "hsl(var(--kanban-board-column-background))"
-        }
+        },
+        headerSearch: "hsl(var(--app-header-search))",
+        placeholder: "hsl(var(--placeholder))"
       },
       borderRadius: {
         lg: "var(--radius)",

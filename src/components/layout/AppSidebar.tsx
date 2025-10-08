@@ -15,7 +15,8 @@ import {
   UserCheck,
   CalendarDays,
   LayoutGrid, 
-  Timer 
+  Timer, 
+  ChevronDown
 } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
@@ -23,7 +24,7 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
+  // SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -36,6 +37,7 @@ import {
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 import { ThemeSliderToggle } from "../ui/theme-toggle";
+import logo from "@/assets/svg/logo.svg"
 
 const menuItems = [
   { 
@@ -190,9 +192,10 @@ export function AppSidebar() {
 
             <div className="flex items-center gap-3">
 
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            {/* <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <div className="w-4 h-4 bg-primary-foreground rounded-sm"></div>
-            </div>
+            </div> */}
+            <img src={logo} alt="humanline logo" />
             {!collapsed && (
               <h1 className="text-xl font-bold text-foreground">Humanline</h1>
             )}
@@ -223,16 +226,19 @@ export function AppSidebar() {
                               // ? "bg-primary text-primary-foreground"
                               ? ""
                               : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+
                           )}
                         >
-                          <item.icon className={cn("w-5 h-5 shrink-0")} color={isActive(item.url) ? "#16a249" : `${sideBarIconColor}`} />
+                          {/* <item.icon className={cn("w-5 h-5 shrink-0")} color={isActive(item.url) ? "#16a249" : `${sideBarIconColor}`} /> */}
+                          <item.icon className={cn("w-4 h-4 shrink-0", isActive(item.url) ? "text-success" : "text-sidebar-icon")} 
+                           />
                           {!collapsed && (
                             <>
                               <span className="flex-1 text-left">{item.title}</span>
-                              <ChevronRight className={cn(
+                              <ChevronDown className={cn(
                                 "w-4 h-4 opacity-50 transition-transform",
                                 // openGroups.includes(item.title) && "rotate-90"
-                                openGroup === item.title && "rotate-90"
+                                openGroup === item.title && "rotate-180"
                               )} />
                             </>
                           )}
@@ -252,6 +258,7 @@ export function AppSidebar() {
                                       isActive(subitem.url)
                                         ? "bg-primary/10 text-primary font-medium"
                                         : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                                     
                                     )}
                                   >
                                     <subitem.icon className="w-4 h-4 shrink-0" />
@@ -276,7 +283,7 @@ export function AppSidebar() {
                             isOnDashboard(item.url) ? "justify-between" : ""
                         )}
                       >
-                        <item.icon className="w-5 h-5 shrink-0" />
+                        <item.icon className={cn("w-5 h-5 shrink-0", isActive(item.url) ? "text-white" : "text-sidebar-icon")} />
                         {!collapsed && <span className="flex-1">{item.title}</span>}
                         {!collapsed && isOnDashboard(item.url) && <LayoutGrid /> }
                       </NavLink>

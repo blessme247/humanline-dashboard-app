@@ -48,8 +48,8 @@ const useMantineThemeConfig = () => {
   };
 
   const mantineTheme = createTheme({
-    fontFamily: 'Inter, sans-serif',
-    headings: { fontFamily: 'Inter, sans-serif' },
+    // fontFamily: 'Inter, sans-serif',
+    // headings: { fontFamily: 'Inter, sans-serif' },
     
     // Create custom color palette from CSS variables
     colors: {
@@ -98,9 +98,10 @@ const useMantineThemeConfig = () => {
         defaultProps: {
           radius: 'lg',
         },
-        styles: (theme) => ({
+        styles: () => ({
           content: {
             backgroundColor: `hsl(${getCSSVar('--date-picker-background')})`,
+            // backgroundColor: '#FFFFFF',
             border: `1px solid hsl(${getCSSVar('--date-picker-border')})`,
           },
           header: {
@@ -124,7 +125,7 @@ const useMantineThemeConfig = () => {
         defaultProps: {
           radius: 'md',
         },
-        styles: (theme) => ({
+        styles: () => ({
           input: {
             backgroundColor: `hsl(${getCSSVar('--date-picker-background')})`,
             borderColor: `hsl(${getCSSVar('--date-picker-border')})`,
@@ -141,16 +142,17 @@ const useMantineThemeConfig = () => {
         }),
       },
       DatePicker: {
-        styles: (theme) => ({
+        styles: () => ({
           calendar: {
             backgroundColor: `hsl(${getCSSVar('--date-picker-background')})`,
           },
           calendarHeader: {
             // backgroundColor: `hsl(${getCSSVar('--date-picker-background')})`,
             marginBottom: '16px',
-            '&:hover': {
-              backgroundColor: `hsl(${getCSSVar('--date-picker-hover')})`,
-          }},
+          //   '&:hover': {
+          //     backgroundColor: `hsl(${getCSSVar('--date-picker-hover')})`,
+          // }
+        },
           calendarHeaderControl: {
             color: `hsl(${getCSSVar('--date-picker-foreground')})`,
             fontSize: '16px',
@@ -217,27 +219,37 @@ const useMantineThemeConfig = () => {
             },
           },
           monthCell: {
-            color: `hsl(${getCSSVar('--date-picker-foreground')})`,
+            color: `hsl(${getCSSVar('--date-picker-foreground')}) !important`,
             fontSize: '14px',
             borderRadius: '8px',
             '&:hover': {
-              backgroundColor: `hsl(${getCSSVar('--date-picker-hover')})`,
+              backgroundColor: `hsl(${getCSSVar('--date-picker-hover')}) !important`,
             },
             '&[data-selected]': {
               backgroundColor: `hsl(${getCSSVar('--primary')})`,
               color: `hsl(${getCSSVar('--primary-foreground')})`,
+               fontWeight: 600,
+              '&:hover': {
+                backgroundColor: `hsl(${getCSSVar('--primary')})`,
+                opacity: 0.9,
+              },
             },
           },
           yearCell: {
-            color: `hsl(${getCSSVar('--date-picker-foreground')})`,
+            color: `hsl(${getCSSVar('--date-picker-foreground')}) !important`,
             fontSize: '14px',
             borderRadius: '8px',
             '&:hover': {
-              backgroundColor: `hsl(${getCSSVar('--date-picker-hover')})`,
+              backgroundColor: `hsl(${getCSSVar('--date-picker-hover')}) !important`,
             },
             '&[data-selected]': {
               backgroundColor: `hsl(${getCSSVar('--primary')})`,
               color: `hsl(${getCSSVar('--primary-foreground')})`,
+               fontWeight: 600,
+              '&:hover': {
+                backgroundColor: `hsl(${getCSSVar('--primary')})`,
+                opacity: 0.9,
+              },
             },
           },
         }),
@@ -258,32 +270,3 @@ const useMantineThemeConfig = () => {
 }
 
 export default useMantineThemeConfig
-
-
-//  colors: {
-//     primary: [
-//       hslToHex('300 100% 26%'),
-//       hslToHex('300 100% 90%'),
-//       hslToHex('300 100% 80%'),
-//       hslToHex('300 100% 70%'),
-//       hslToHex('300 100% 60%'),
-//       hslToHex( '300 100% 100%'), // Main primary color
-//       hslToHex('300 100% 30%'),
-//       hslToHex('300 100% 25%'),
-//       hslToHex('300 100% 20%'),
-//       hslToHex('300 100% 15%'),
-//     ],
-//     tertiary: [
-//       hslToHex('224 38% 90%'),
-//       hslToHex('224 38% 80%'),
-//       hslToHex('224 38% 70%'),
-//       hslToHex('224 38% 60%'),
-//       hslToHex('224 38% 50%'),
-//       hslToHex(getCSSVar('--tertiary') || '224 38% 11%'), // Main tertiary color
-//       hslToHex('224 38% 9%'),
-//       hslToHex('224 38% 7%'),
-//       hslToHex('224 38% 5%'),
-//       hslToHex('224 38% 3%'),
-//     ],
-//   },
-  
