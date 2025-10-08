@@ -190,14 +190,14 @@ export function AppSidebar() {
         <div className="p-6 border-b border-sidebar-border">
           <div className={cn("flex items-center gap-3", !collapsed ? "justify-between" : "")}>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[10px]">
 
             {/* <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <div className="w-4 h-4 bg-primary-foreground rounded-sm"></div>
             </div> */}
             <img src={logo} alt="humanline logo" />
             {!collapsed && (
-              <h1 className="text-xl font-bold text-foreground">Humanline</h1>
+              <h1 className="text-xl font-[800] text-sidebar-foreground">Humanline</h1>
             )}
             </div>
             <SidebarTrigger1 />
@@ -221,7 +221,7 @@ export function AppSidebar() {
                         <SidebarMenuButton
                           onClick={(e) => handleParentClick(item, e)}
                           className={cn(
-                            "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors group w-full",
+                            "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold transition-colors group w-full",
                             isGroupActive(item)
                               // ? "bg-primary text-primary-foreground"
                               ? ""
@@ -254,10 +254,10 @@ export function AppSidebar() {
                                   <NavLink
                                     to={subitem.url}
                                     className={cn(
-                                      "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ",
+                                      "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-bold transition-colors ",
                                       isActive(subitem.url)
-                                        ? "bg-primary/10 text-primary font-medium"
-                                        : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                                        ? "bg-primary/10 text-primary "
+                                        : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                                      
                                     )}
                                   >
@@ -276,7 +276,7 @@ export function AppSidebar() {
                       <NavLink
                         to={item.url}
                         className={cn(
-                          "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors group",
+                          "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold transition-colors group",
                           isActive(item.url)
                             ? "bg-primary text-primary-foreground"
                             : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",

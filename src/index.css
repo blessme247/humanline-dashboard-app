@@ -56,7 +56,7 @@ All colors MUST be HSL.
 
     /* Sidebar light theme */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-foreground: 221 39% 11%;
     --sidebar-primary: 142 76% 36%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 4.8% 95.9%;
@@ -67,7 +67,7 @@ All colors MUST be HSL.
     --sidebar-icon: 216 13% 47%;
 
     /* Dashboard specific colors */
-    --stats-up: 142 76% 36%;
+    --stats-up: 158 61% 40%;
     --stats-down: 0 84.2% 60.2%;
     --chart-line-1: 142 76% 36%;
     --chart-line-2: 45 93% 58%;
@@ -77,14 +77,6 @@ All colors MUST be HSL.
     --kanban-board-column-background: 0 0% 97%;
 
     /* DatePicker specific variables - Light theme */
-
-    /* --date-picker-background: 300 100% 100%;
-  --date-picker-foreground: 213 31% 91%;
-  --date-picker-border: 216 34% 17%;
-  --date-picker-hover: 216 34% 17%;
-  --date-picker-muted: 215 20.2% 65.1%;
-  --date-picker-data-in-range: 152 55% 94%; */
-
     --date-picker-background: 0 0% 100%;
     --date-picker-foreground: 222.2 84% 4.9%;
     --date-picker-border: 214.3 31.8% 91.4%;
@@ -99,7 +91,7 @@ All colors MUST be HSL.
   .dark {
     /* --background: 220 13% 9%; */
     --background: 215 28% 17%;
-    --foreground: 210 40% 98%;
+    --foreground: 0 0% 100%;
 
     --card: 215 28% 17%;
     --card-foreground: 210 40% 98%;
@@ -143,7 +135,7 @@ All colors MUST be HSL.
 
     /* Sidebar dark theme */
     --sidebar-background: 215 28% 17%;
-    --sidebar-foreground: 215 20% 85%;
+    --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 142 76% 36%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 215 25% 25%;
@@ -154,7 +146,7 @@ All colors MUST be HSL.
     --sidebar-icon: 216 13% 47%;
 
     /* Dashboard dark colors */
-    --stats-up: 142 76% 36%;
+    --stats-up: 158 61% 40%;
     --stats-down: 0 84.2% 60.2%;
     --chart-line-1: 142 76% 36%;
     --chart-line-2: 45 93% 58%;
@@ -164,26 +156,17 @@ All colors MUST be HSL.
     --kanban-board-column-background: 220 13% 11%;
 
     /* DatePicker specific variables - Dark theme */
-    /* --date-picker-background: 224 38% 11%;
-  --date-picker-foreground: 222.2 84% 4.9%;
-  --date-picker-border: 214.3 31.8% 91.4%;
-  --date-picker-hover: 210 40% 96.1%;
-  --date-picker-muted: 215.4 16.3% 46.9%;
-  --date-picker-data-in-range: 152 55% 94%; */
 
     --date-picker-background: 222.2 84% 4.9%;
     --date-picker-foreground: 210 40% 98%;
     --date-picker-border: 217.2 32.6% 17.5%;
     --date-picker-hover: 210 40% 10%;
     --date-picker-muted: 215 20.2% 5%;
-
-    /* --date-picker-border: 214.3 31.8% 91.4%;
-  --date-picker-hover: 210 40% 96.1%;
-  --date-picker-muted: 215.4 16.3% 46.9%; */
     --date-picker-data-in-range: 142 76% 15%;
 
     --app-header-search: 217 19% 24%;
     --placeholder: 216 13% 47%;
+    --table-header: 211 25% 84%;
   }
 }
 
@@ -193,7 +176,7 @@ All colors MUST be HSL.
     font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    /* color: hsl(210 40% 96.1%) */
+    /* color: hsl(221, 39%, 11%) */
   }
 
   body {

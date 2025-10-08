@@ -45,46 +45,14 @@ const statsData = [
   },
 ];
 
-const chartData = [
-  { month: "Jan", value: 30 },
-  { month: "Feb", value: 45 },
-  { month: "Mar", value: 35 },
-  { month: "Apr", value: 55 },
-  { month: "May", value: 40 },
-  { month: "Jun", value: 60 },
-  { month: "Jul", value: 50 },
-];
-
-const employees = [
-  {
-    id: 1,
-    name: "Pristia Candra",
-    email: "pristia@email.com",
-    jobTitle: "UI UX Designer",
-    lineManager: "@Pristiacandra",
-    department: "Team Product",
-    office: "Unpixel Office",
-    avatar: "/avatars/pristia.jpg",
-  },
-  {
-    id: 2,
-    name: "Hanna Baptista",
-    email: "hanna@email.com",
-    jobTitle: "Graphic Designer",
-    lineManager: "@Pristiacandra",
-    department: "Team Product",
-    office: "Unpixel Office",
-    avatar: "/avatars/hanna.jpg",
-  },
-];
 
 export default function Dashboard() {
   return (
     <div className="flex-1 space-y-6 p-6">
       {/* Header */}
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl font-semibold text-foreground">Hi, Pristia</h1>
-        <p className="text-sidebar-icon font-medium">This is your HR report so far</p>
+        <h1 className="text-2xl font-bold text-foreground">Hi, Pristia</h1>
+        <p className="text-sidebar-icon text-sm font-medium">This is your HR report so far</p>
       </div>
 
       <Card className="pt-4 rounded-[12px]">
@@ -105,9 +73,9 @@ export default function Dashboard() {
               <div className="space-y-1">
                 <div className="flex items-center gap-3">
 
-                <p className="text-3xl font-bold text-foreground">{stat.value}</p>
-                    <div className={`flex items-center gap-1 text-sm ${
-                  stat.trend === "up" ? "text-stats-up bg-[#F0FDF4] py-1 px-2 rounded-md" : "text-stats-down py-1 px-2 rounded-md bg-[#FEF2F2]"
+                <h3 className="text-[2rem] font-bold text-foreground">{stat.value}</h3>
+                    <div className={`flex items-center gap-1 text-sm rounded-[10px] ${
+                  stat.trend === "up" ? "text-stats-up bg-[#E7F7EF] py-1 px-2 " : "text-stats-down py-1 px-2  bg-[#FFEDEC]"
                 }`}>
                   {stat.trend === "up" ? (
                     <TrendingUp className="w-4 h-4" />
@@ -129,17 +97,17 @@ export default function Dashboard() {
           <CardHeader>
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
 
-              <div className="flex flex-col gap-2 w-full "> 
-              <CardTitle className="w-full md:w-fit text-lg font-semibold">Team Performance</CardTitle>
+              <div className="flex flex-col gap-4 w-full "> 
+              <CardTitle className="w-full md:w-fit ">Team Performance</CardTitle>
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
 
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-stats-up rounded-full"></div>
-                <span className="text-sm text-muted-foreground">Project Team</span>
+                <div className="w-2 h-2 bg-success rounded-full"></div>
+                <span className="text-[10px] font-bold text-foreground">Project Team</span>
               </div>
                  <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-[#FFC107] rounded-full"></div>
-                <span className="text-sm text-muted-foreground">Logistics Team</span>
+                <div className="w-2 h-2 bg-[#FFC107] rounded-full"></div>
+                <span className="text-[10px] font-bold text-foreground">Logistics Team</span>
               </div>
               </div>
               </div>
@@ -171,7 +139,7 @@ export default function Dashboard() {
       <Card className="col-span-2">
         <CardHeader>
           <div className="flex items-start md:items-center justify-between flex-col gap-4 md:flex-row">
-            <CardTitle className="text-lg font-semibold">Employees</CardTitle>
+            <CardTitle className="text-lg font-bold text-foreground">Employees</CardTitle>
             <div className="flex items-center gap-4 w-full md:w-64 relative">
               <Input 
                 placeholder="Search employee" 
@@ -221,7 +189,7 @@ export default function Dashboard() {
         <Card className="col-span-2 lg:col-span-1">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle className="text-lg font-semibold">Total Employee</CardTitle>
+              <CardTitle className="text-lg font-bold text-foreground">Total Employee</CardTitle>
               <Select defaultValue="all-time">
                 <SelectTrigger className="w-24 h-8 text-xs rounded-[8px] border-none">
                   <SelectValue />
@@ -235,68 +203,6 @@ export default function Dashboard() {
             </div>
           </CardHeader>
           <CardContent>
-            {/* <div className="flex flex-col items-center space-y-4">
-              <div className="relative w-32 h-32">
-                <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
-                  <path
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    fill="none"
-                    stroke="hsl(var(--muted))"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    fill="none"
-                    stroke="hsl(var(--chart-line-1))"
-                    strokeWidth="2"
-                    strokeDasharray="60, 100"
-                  />
-                  <path
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    fill="none"
-                    stroke="hsl(var(--chart-line-2))"
-                    strokeWidth="2"
-                    strokeDasharray="25, 100"
-                    strokeDashoffset="-60"
-                  />
-                  <path
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    fill="none"
-                    stroke="hsl(var(--chart-line-3))"
-                    strokeWidth="2"
-                    strokeDasharray="15, 100"
-                    strokeDashoffset="-85"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-2xl font-bold">121</span>
-                  <span className="text-xs text-muted-foreground">Total Emp</span>
-                </div>
-              </div>
-              <div className="space-y-2 w-full">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-stats-up rounded-full "></div>
-                    <span className="text-sm">Others</span>
-                  </div>
-                  <span className="text-sm font-medium">71</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#f8c630] rounded-full"></div>
-                    <span className="text-sm">Onboarding</span>
-                  </div>
-                  <span className="text-sm font-medium">27</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#3b82f6] rounded-full"></div>
-                    <span className="text-sm">Offboarding</span>
-                  </div>
-                  <span className="text-sm font-medium">23</span>
-                </div>
-              </div>
-            </div> */}
             <EmployeeDonutChart/>
           </CardContent>
         </Card>

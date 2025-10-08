@@ -52,16 +52,16 @@ export function AppHeader() {
 
         {/* Center Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <Button variant="ghost" className="text-foreground hover:text-primary">
+          <Button variant="ghost" className="text-sidebar-foreground font-medium text-sm hover:text-primary">
             Documents
           </Button>
-          <Button variant="ghost" className="text-foreground hover:text-primary">
+          <Button variant="ghost" className="text-sidebar-foreground font-medium text-sm hover:text-primary">
             News
           </Button>
-          <Button variant="ghost" className="text-foreground hover:text-primary">
+          <Button variant="ghost" className="text-sidebar-foreground font-medium text-sm hover:text-primary">
             Payslip
           </Button>
-          <Button variant="ghost" className="text-foreground hover:text-primary">
+          <Button variant="ghost" className="text-sidebar-foreground font-medium text-sm hover:text-primary">
             Report
           </Button>
         </nav>

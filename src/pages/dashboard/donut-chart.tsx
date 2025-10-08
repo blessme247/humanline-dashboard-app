@@ -75,11 +75,11 @@ export default function EmployeeDonutChart() {
         {data.map((item, i) => (
           <div key={i} className="flex items-center gap-2">
             <span
-              className="w-3 h-3 rounded-full"
+              className="w-[10px] h-[10px] rounded-full"
               style={{ backgroundColor: item.color }}
             />
-            <span className=" text-sm">{item.name}</span>
-            <span className="ml-auto font-medium text-sm">{item.value}</span>
+            <span className=" text-[12px] font-medium">{item.name}</span>
+            <span className="ml-auto font-bold text-sm">{item.value}</span>
           </div>
         ))}
       </div>

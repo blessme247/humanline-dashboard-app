@@ -88,7 +88,7 @@ const EmployeesTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-xs font-bold w-full"
             >
               Employee Name
  
@@ -117,8 +117,8 @@ const EmployeesTable = () => {
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1">
-                <p className="font-medium text-sm">{employee.name}</p>
-                <p className="text-xs text-muted-foreground">{employee.email}</p>
+                <p className="">{employee.name}</p>
+                <p className="text-[10px] text-[#A0AEC0]">{employee.email}</p>
               </div>
             </div>
           );
@@ -131,7 +131,7 @@ const EmployeesTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-xs font-bold w-full"
             >
               Job Title
               {column.getIsSorted() === "asc" ? (
@@ -152,7 +152,7 @@ const EmployeesTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-xs font-bold w-full"
             >
               Line Manager
               {column.getIsSorted() === "asc" ? (
@@ -173,7 +173,7 @@ const EmployeesTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-xs font-bold w-full"
             >
               Department
               {column.getIsSorted() === "asc" ? (
@@ -195,7 +195,7 @@ const EmployeesTable = () => {
             <Button
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-              className="hover:bg-transparent p-0 h-auto font-medium w-full"
+              className="hover:bg-transparent p-0 h-auto text-xs font-bold w-full"
             >
               Department
               {column.getIsSorted() === "asc" ? (
