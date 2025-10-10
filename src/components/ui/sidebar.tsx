@@ -1,10 +1,10 @@
 
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { ChevronsLeft, ChevronsRight, PanelLeft } from "lucide-react";
+import { ChevronsLeft, ChevronsRight,  } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/use-mobile";
-import { cn, getBrowserDarkModeThemePreference, getCookieValue, SIDEBAR_COOKIE_NAME, THEME_COOKIE_NAME } from "@/lib/utils";
+import { cn, getCookieValue, SIDEBAR_COOKIE_NAME, THEME_COOKIE_NAME } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -14,7 +14,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { createContext, forwardRef, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
-const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH = "17.5rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "4.5rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
@@ -232,7 +232,7 @@ const Sidebar = forwardRef<
       />
       <div
         className={cn(
-          "fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear md:flex",
+          "fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear md:flex ",
           side === "left"
             ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
             : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
@@ -295,7 +295,7 @@ const SidebarTrigger1 = forwardRef<React.ElementRef<typeof Button>, React.Compon
         data-sidebar="trigger"
         variant="ghost"
         size="icon"
-        className={cn("h-7 w-7", className)}
+        className={cn("h-4 w-4 text-[#FFFFFF4D]", className)}
         onClick={(event) => {
           onClick?.(event);
           toggleSidebar();
@@ -414,7 +414,7 @@ const SidebarGroup = forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ 
     <div
       ref={ref}
       data-sidebar="group"
-      className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
+      className={cn("relative flex w-full min-w-0 flex-col py-2", className)}
       {...props}
     />
   );
@@ -634,7 +634,7 @@ const SidebarMenuSub = forwardRef<HTMLUListElement, React.ComponentProps<"ul">>(
       data-sidebar="menu-sub"
       className={cn(
         // "mx-3.5 flex min-w-0 translate-x-px flex-col gap-2 border-l border-sidebar-border px-2.5 py-0.5 pt-2.5",
-        "mx-3.5 flex min-w-0 translate-x-px flex-col gap-2 border-l border-border py-0.5 pt-2.5",
+        "mx-3.5 flex min-w-0 translate-x-px flex-col  pt-2 ",
         "group-data-[collapsible=icon]:hidden",
         className,
       )}
