@@ -64,7 +64,8 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 142 76% 36%;
     --sidebar-theme-toggle-body: 0 0% 97%;
-    --sidebar-icon: 216 13% 47%;
+    --sidebar-icon: 214 20% 69%;
+    --sidebar-sub-active: ;
 
     /* Dashboard specific colors */
     --stats-up: 158 61% 40%;
@@ -176,7 +177,7 @@ All colors MUST be HSL.
     font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    /* color: hsl(221, 39%, 11%) */
+    /* color: #a0aec0 */
   }
 
   body {

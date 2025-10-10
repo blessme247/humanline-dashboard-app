@@ -36,7 +36,7 @@ export const ThemeSliderToggle = () => {
 
   if (collapsed)
     return (
-      <div className="flex items-center gap-2 px-3 py-2">
+      <div className="flex items-center gap-2 px-0 py-2">
         <Button
           variant="ghost"
           size="sm"
@@ -56,14 +56,14 @@ export const ThemeSliderToggle = () => {
 
   return (
     // <div className="relative flex w-fit h-[35px] bg-sidebar-theme-toggle-body items-center py-1.5 px-4 rounded-full border border-red-300">
-    <div className="relative flex w-fit h-[43px] bg-sidebar-toggleBody items-center py-1.5 px-4 rounded-full border border-sidebar-toggleBody">
+    <div className="relative flex w-fit h-[43px] bg-sidebar-toggleBody items-center py-1.5 px-6 rounded-full border-[3px] border-sidebar-toggleBody">
       <button
-        className={cn(`${TOGGLE_CLASSES}`, !isDark ? "text-[#111827]" : "")}
+        className={cn(`${TOGGLE_CLASSES}`, !isDark ? "text-[#111827]" : "text-[#687588]")}
         onClick={() => {
           toggleTheme();
         }}
       >
-        <Sun className="relative h-4 w-4 z-10 text-lg md:text-sm" fill={!isDark ? "#111827" : ""} />
+        <Sun className="relative h-4 w-4 z-10 text-lg md:text-sm" fill={!isDark ? "#111827" : "#A0AEC0"} />
         <span className="relative z-10">Light</span>
       </button>
       <button
@@ -72,7 +72,7 @@ export const ThemeSliderToggle = () => {
           toggleTheme();
         }}
       >
-        <Moon className="relative h-4 w-4 z-10 text-lg md:text-sm" fill={!isDark ? "#A0AEC0" : ""} />
+        <Moon className="relative h-4 w-4 z-10 text-lg md:text-sm" fill={!isDark ? "#A0AEC0" : "#FFFFFF"} />
         <span className="relative z-10">Dark</span>
       </button>
       <div
